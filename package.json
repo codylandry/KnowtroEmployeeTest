@@ -1,14 +1,14 @@
 {
-  "name": "angular2-webpack-starter",
+  "name": "knowtro-employee-test",
   "version": "5.0.5",
-  "description": "An Angular 2 Webpack Starter kit featuring Angular 2 (Router, Http, Forms, Services, Tests, E2E, Coverage), Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack by AngularClass",
+  "description": "This is an angular2 web application designed to test potential employees of knowtro.",
   "keywords": [
     "angular2",
-    "webpack",
+    "knowtro",
     "typescript"
   ],
-  "author": "Patrick Stapleton <patrick@angularclass.com>",
-  "homepage": "https://github.com/angularclass/angular2-webpack-starter",
+  "author": "Isaac Cummings <Isaac@knowtro.com>",
+  "homepage": "https://github.com/Knowtro/EmployeeAplicationTest",
   "license": "MIT",
   "scripts": {
     "build:dev": "webpack --config config/webpack.dev.js --progress --profile",
@@ -78,7 +78,10 @@
     "http-server": "^0.9.0",
     "ie-shim": "^0.1.0",
     "rxjs": "5.0.0-beta.11",
-    "zone.js": "~0.6.17"
+    "zone.js": "~0.6.17",
+    "jquery":"3.0.0",
+    "tether": "1.2.0",
+    "bootstrap": "4.0.0-alpha.4"
   },
   "devDependencies": {
     "@types/core-js": "^0.9.28",
@@ -97,6 +100,7 @@
     "css-loader": "^0.25.0",
     "exports-loader": "^0.6.3",
     "expose-loader": "^0.7.1",
+    "extract-text-webpack-plugin": "2.0.0-beta.4",
     "file-loader": "^0.9.0",
     "gh-pages": "^0.11.0",
     "html-webpack-plugin": "^2.21.0",

@@ -14,7 +14,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const HtmlElementsPlugin = require('./html-elements-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
-
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 /*
  * Webpack Constants
  */
@@ -154,10 +154,16 @@ module.exports = function(options) {
          * Returns file content as string
          *
          */
-        {
-          test: /\.css$/,
-          loaders: ['to-string-loader', 'css-loader']
-        },
+          {
+              test: /\.css$/,
+              exclude: helpers.root('app'),
+              loader: ExtractTextPlugin.extract({fallbackLoader: 'style', loader: 'css?sourceMap' })
+          },
+          {
+            test: /\.css$/,
+            include: helpers.root('app'),
+            loaders: ['to-string-loader', 'css-loader']
+          },
 
         /* Raw loader support for *.html
          * Returns file content as string
@@ -272,6 +278,13 @@ module.exports = function(options) {
        */
       new HtmlElementsPlugin({
         headTags: require('./head-config.common')
+      }),
+
+      new webpack.ProvidePlugin({
+        jQuery: 'jquery',
+        $: 'jquery',
+        jquery: 'jquery',
+        'window.Tether': 'tether'
       }),
 
     ],

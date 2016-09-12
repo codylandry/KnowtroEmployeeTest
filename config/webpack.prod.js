@@ -16,6 +16,7 @@ const IgnorePlugin = require('webpack/lib/IgnorePlugin');
 const DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 /**
  * Webpack Constants
@@ -94,7 +95,7 @@ module.exports = function(env) {
      * See: http://webpack.github.io/docs/configuration.html#plugins
      */
     plugins: [
-
+      new ExtractTextPlugin('[name].[hash].css'),
       /**
        * Plugin: WebpackMd5Hash
        * Description: Plugin to replace a standard webpack chunkhash with md5.
