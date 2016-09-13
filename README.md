@@ -10,7 +10,7 @@
 
 
 
-#### Potential Employee Test
+## Potential Employee Test
 ### Getting Started
 
 **Make sure you have Node version >= 5.0 and NPM >= 3**
