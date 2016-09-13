@@ -11,7 +11,7 @@
 
 <div class="error" *ngIf="error">{{error}}</div>
 <button class="add-hero btn btn-outline-primary" (click)="addHero()">Add New Hero</button>
-<div *ngIf="addingHero">
+<div *ngIf="selectedHero == null">
   <my-hero-detail (close)="close($event)"></my-hero-detail>
 </div>
 
