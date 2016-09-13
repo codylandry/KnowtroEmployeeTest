@@ -10,7 +10,15 @@
 
 
 
-## Potential Employee Test
+# Potential Employee Test
+
+## The Assignment:
+This is a test of your ability to assess an existing code base and make changes while maintaining the existing conventions and structure. There are several components to the test: 
+* Add a field called 'Alter Ego' to the hero model. Make sure that you can specify this field when creating a new hero, and that you can edit the field alter on. 
+* Add the ability to delete heroes on the detail page.
+* Add an 'Are you sure' pop up when deleting heroes
+* The 'Add New Hero' button is broken for some reason. Figure out why it is broken, and fix it. 
+
 ### Getting Started
 
 **Make sure you have Node version >= 5.0 and NPM >= 3**
@@ -45,7 +53,6 @@ go to [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http
 * [Configuration](#configuration)
 * [TypeScript](#typescript)
 * [@Types](#types)
-* [The Assignment](#the-assignment)
 * [License](#license)
 
 
