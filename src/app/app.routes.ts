@@ -1,17 +1,30 @@
 import { Routes, RouterModule } from '@angular/router';
-import { Home } from './home';
-import { About } from './about';
 import { NoContent } from './no-content';
 
 import { DataResolver } from './app.resolver';
 
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { HeroesComponent } from './heroes/heroes.component';
+
 
 export const ROUTES: Routes = [
-  { path: '',      component: Home },
-  { path: 'home',  component: Home },
-  { path: 'about', component: About },
   {
-    path: 'detail', loadChildren: () => System.import('./+detail')
+    path: '',
+    redirectTo: '/dashboard',
+    pathMatch: 'full',
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent
+  },
+  {
+    path: 'detail/:id',
+    component: HeroDetailComponent
+  },
+  {
+    path: 'heroes',
+    component: HeroesComponent
   },
   { path: '**',    component: NoContent },
 ];

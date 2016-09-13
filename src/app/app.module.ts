@@ -4,24 +4,33 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
+// Imports for loading & configuring the in-memory web api
+import { XHRBackend } from '@angular/http';
+import { InMemoryBackendService, SEED_DATA } from 'angular2-in-memory-web-api';
 
 /*
  * Platform and Environment providers/directives/pipes
  */
 import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
+import { InMemoryDataService } from './services/in-memory-data.service';
 // App is our top level component
 import { App } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
-import { AppState, InteralStateType } from './app.service';
-import { Home } from './home';
-import { About } from './about';
 import { NoContent } from './no-content';
-import { XLarge } from './home/x-large';
+import { AppState, InteralStateType } from './services/app.service';
 
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { HeroesComponent } from './heroes/heroes.component';
+import { HeroSearchComponent } from './hero-search/hero-search.component';
+import { HeroSearchService } from './hero-search/hero-search.service';
+import { HeroService } from './services/hero.service';
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
+  HeroSearchService,
+  HeroService,
   AppState
 ];
 
@@ -38,10 +47,11 @@ type StoreType = {
   bootstrap: [ App ],
   declarations: [
     App,
-    About,
-    Home,
     NoContent,
-    XLarge
+    DashboardComponent,
+    HeroDetailComponent,
+    HeroesComponent,
+    HeroSearchComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -50,8 +60,10 @@ type StoreType = {
     RouterModule.forRoot(ROUTES, { useHash: true })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
-    ENV_PROVIDERS,
-    APP_PROVIDERS
+    ...ENV_PROVIDERS,
+    ...APP_PROVIDERS,
+    { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
+    { provide: SEED_DATA, useClass: InMemoryDataService }     // in-mem server data
   ]
 })
 export class AppModule {
