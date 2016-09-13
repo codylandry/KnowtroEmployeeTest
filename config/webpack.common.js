@@ -152,16 +152,16 @@ module.exports = function(options) {
         /*
          * to string and css loader support for *.css files
          * Returns file content as string
-         *
+         *''
          */
           {
-              test: /\.css$/,
-              exclude: helpers.root('app'),
-              loader: ExtractTextPlugin.extract({fallbackLoader: 'style', loader: 'css?sourceMap' })
+            test: /\.css$/,
+            exclude: helpers.root('src', 'app'),
+            loader: ExtractTextPlugin.extract({fallbackLoader: 'style', loader: 'css?sourceMap' })
           },
           {
             test: /\.css$/,
-            include: helpers.root('app'),
+            include: helpers.root('src', 'app'),
             loaders: ['to-string-loader', 'css-loader']
           },
 
