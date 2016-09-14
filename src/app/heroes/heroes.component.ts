@@ -20,7 +20,7 @@ export class HeroesComponent implements OnInit {
     private router: Router,
     private heroService: HeroService) { }
 
-  getHeroes(): void {
+  getHeroes(): Promise<Hero[]> {
     return this.heroService
       .getHeroes()
       .then(heroes => this.heroes = heroes)
@@ -29,7 +29,8 @@ export class HeroesComponent implements OnInit {
 
   addHero(): void {
     this.addingHero = true;
-    //this.selectedHero = null;
+    // this.selectedHero = new Hero;
+    this.router.navigate(['/detail', 'new']);
   }
 
   close(savedHero: Hero): void {
@@ -39,6 +40,7 @@ export class HeroesComponent implements OnInit {
 
   deleteHero(hero: Hero, event: any): void {
     event.stopPropagation();
+    if (!confirm(`Are you sure you want to delete ${hero.name}?`)) return
     this.heroService
       .delete(hero)
       .then(res => {

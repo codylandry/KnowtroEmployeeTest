@@ -22,16 +22,31 @@ export class HeroDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
-      if (params['id'] !== undefined) {
+
+      if (params['id'] === undefined){
+        this.navigated = false;
+        this.hero = new Hero();
+      } else if (params['id'] === 'new') {
+        this.navigated = true;
+        this.hero = new Hero();
+      } else {
         let id = +params['id'];
         this.navigated = true;
         this.heroService.getHero(id)
             .then(hero => this.hero = hero);
-      } else {
-        this.navigated = false;
-        this.hero = new Hero();
       }
     });
+  }
+
+  deleteHero(event: any): void {
+    event.stopPropagation();
+    if (!confirm(`Are you sure you want to delete ${this.hero.name}?`)) return
+    this.heroService
+      .delete(this.hero)
+      .then(res => {
+        this.goBack()
+      })
+      .catch(error => this.error = error);
   }
 
   save(): void {

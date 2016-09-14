@@ -5,7 +5,10 @@
   <div>
     <label>name: </label>
     <input class="form-control" [(ngModel)]="hero.name" placeholder="name" />
+    <input class="form-control" [(ngModel)]="hero.alterEgo" placeholder="Alter Ego" />
   </div>
   <button class="btn btn-secondary" (click)="goBack()">Back</button>
+  <button class="btn btn-danger pull-md-right delete-button" (click)="deleteHero($event)">Delete</button>
+
   <button class="btn btn-outline-success" (click)="save()">Save</button>
 </div>
